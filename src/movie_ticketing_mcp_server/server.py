@@ -38,9 +38,15 @@ def create_mcp_server():
                 params={"owner": owner, "catalog_id": catalog_id},
             )
 
+            # Wrap list response in a dictionary for structuredContent
+            if isinstance(result, list):
+                structured_content = {"tickets": result}
+            else:
+                structured_content = result
+
             return CallToolResult(
                 content=[TextContent(type="text", text=f"{result}")],
-                structuredContent=result,
+                structuredContent=structured_content,
             )
         except Exception as e:
             logger.error(f"Error getting ticketing information : {e}")
