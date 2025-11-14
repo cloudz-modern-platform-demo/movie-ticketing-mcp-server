@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "movie-ticketing-mcp-server": {
+      "url": "http://localhost:9100/mcp"
+    }
+  }
+}
