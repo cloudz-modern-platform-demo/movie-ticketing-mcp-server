@@ -28,14 +28,12 @@ def create_mcp_server():
         description="Get the tickets information.",
         structured_output=True,
     )
-    async def get_tickets(
-        owner: str | None = None, catalog_id: str | None = None
-    ) -> CallToolResult:
+    async def get_tickets(owner: str | None = None) -> CallToolResult:
         """Get the ticketing information of a movie."""
         try:
             result = await http_client.get(
-                f"{api_server_settings.root_path}/tickets",
-                params={"owner": owner, "catalog_id": catalog_id},
+                "/tickets",
+                params={"owner": owner},
             )
 
             # Wrap list response in a dictionary for structuredContent

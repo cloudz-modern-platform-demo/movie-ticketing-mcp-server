@@ -8,12 +8,14 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "fastmcp>=2.13.0.2",
     "httpx>=0.28.1",
     "mcp>=1.21.1",
 ]
 
 [project.scripts]
 movie-ticketing-mcp-server = "movie_ticketing_mcp_server:main"
+movie-ticketing-fastmcp-server = "movie_ticketing_mcp_server:fastmcp_main"
 
 [build-system]
 requires = ["uv_build>=0.8.17,<0.9.0"]
