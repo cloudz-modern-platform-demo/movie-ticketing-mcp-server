@@ -28,12 +28,22 @@ def create_mcp_server():
         description="Get the tickets information.",
         structured_output=True,
     )
-    async def get_tickets(owner: str | None = None) -> CallToolResult:
+    async def get_tickets(
+        theater_name: str | None = None,
+        movie_title: str | None = None,
+        user_id: str | None = None,
+        status: str | None = None,
+    ) -> CallToolResult:
         """Get the ticketing information of a movie."""
         try:
             result = await http_client.get(
                 "/tickets",
-                params={"owner": owner},
+                params={
+                    "theater_name": theater_name,
+                    "movie_title": movie_title,
+                    "user_id": user_id,
+                    "status": status,
+                },
             )
 
             # Wrap list response in a dictionary for structuredContent
